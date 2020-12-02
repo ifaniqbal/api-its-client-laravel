@@ -1,6 +1,6 @@
 # API ITS client for Laravel
 
-The purpose of this package is ...
+The purpose of this package is to consume API ITS. This package should be compatible with Laravel 5.1, 5.5, and 6.x.
 
 ## Installation
 
@@ -39,8 +39,6 @@ For example, if most of the values you need is same as default values, configure
 ```html
 API_ITS_CLIENT_ID=
 API_ITS_CLIENT_SECRET=
-```
-
 ```
 
 ## Usage
