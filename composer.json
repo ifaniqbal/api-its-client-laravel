@@ -1,0 +1,33 @@
+{
+    "name": "ifaniqbal/api-its-laravel",
+    "description": "API ITS client for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ifan Iqbal",
+            "email": "ifaniqbal.com@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.2",
+        "guzzlehttp/guzzle": "~6.0",
+        "illuminate/support": "5.1.* || 5.5.* || ^6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ifaniqbal\\ApiIts\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ifaniqbal\\ApiIts\\ApiItsServiceProvider"
+            ],
+            "aliases": {
+                "ApiIts": "Ifaniqbal\\ApiIts\\Facades\\ApiIts"
+            }
+        }
+    }
+}
