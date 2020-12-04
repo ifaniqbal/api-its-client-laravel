@@ -15,6 +15,9 @@ class ApiIts
     private $mahasiswa;
     private $mahasiswaHistoryStatus;
     private $mahasiswaTranskripMahasiswa;
+    private $mahasiswaFrsKuliah;
+    private $kodeProdi;
+    private $prodiKurikulum;
 
     public function reset()
     {
@@ -22,6 +25,9 @@ class ApiIts
         $this->mahasiswa = null;
         $this->mahasiswaHistoryStatus = null;
         $this->mahasiswaTranskripMahasiswa = null;
+        $this->mahasiswaFrsKuliah = null;
+        $this->kodeProdi = null;
+        $this->prodiKurikulum = null;
     }
 
     public function username($username)
@@ -32,6 +38,17 @@ class ApiIts
 
         $this->reset();
         $this->username = $username;
+        return $this;
+    }
+
+    public function kodeProdi($kodeProdi)
+    {
+        if ($kodeProdi == $this->kodeProdi) {
+            return $this;
+        }
+
+        $this->reset();
+        $this->kodeProdi = $kodeProdi;
         return $this;
     }
 
@@ -93,6 +110,22 @@ class ApiIts
         }
 
         return $this->mahasiswaTranskripMahasiswa;
+    }
+
+    public function prodiKurikulum($kodeProdi = null, $tahun)
+    {
+        $kodeProdi ? $this->kodeProdi($kodeProdi) : null;
+
+        if (!$this->prodiKurikulum) {
+            $this->prodiKurikulum = $this->get(
+                'https://api.its.ac.id:8443/akademik/1.5/prodi/' . $kodeProdi . '/kurikulum',
+                [
+                    'query' => compact('tahun')
+                ]
+            );
+        }
+
+        return $this->prodiKurikulum;
     }
 
     public function accessToken()
